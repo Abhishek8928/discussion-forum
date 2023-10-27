@@ -1,0 +1,74 @@
+
+
+.background-img-top{
+    
+    width:100%;
+    height:26vh;
+    background: url("https://brainly.in/app/img/profile/wallpaper_others.svg") no-repeat;
+    background-size: cover;
+    margin-bottom: 6rem;
+}
+.d-flex-show-{
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+
+
+}
+.card-show-con-{
+    width:90rem;
+    border-radius: 0.4rem;
+    padding:0.4rem 1.2rem;
+
+}
+
+.card-bottom-title{
+    font-size: 2rem;
+    padding: 1.2rem 0;
+}
+
+.card-show-con- > form >  textarea{
+    width:100% !important;
+    padding:1rem 0.8rem;
+    border-radius: 0.6rem;
+    border:1px solid #ccc;
+}
+form{
+    padding:4rem 0;
+}
+.card-show-con > form >  textarea:focus{
+    outline: none;
+    border:1px solid #000;
+}
+
+label{
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+    display: inline-block;
+}
+
+.comment{
+    border-radius: 0.4rem;
+    padding:1rem 0.8rem;
+}
+
+.response-con > h1{
+    padding:4rem 0;
+}
+
+.button {
+  
+    background-color: #EC4989;
+    color: #ffffff;
+    padding: 1.6rem 1.8rem;
+    font-size: 1.34rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    border-radius: 0.4rem;
+    gap: 0.75rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1.2rem;
+   
+  }

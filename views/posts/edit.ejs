@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <title>dashboard</title>
+  </head>
+  <body>
+    <%- include("../includes/navbar.ejs")  %>
+    <div class="new-post-wrapper">
+      <form
+        id="form"
+        action="/posts/<%= data.id %>?_method=PATCH"
+        method="post"
+      >
+        <div class="input-holder">
+          <label for="name">Select a club</label>
+          <input required name="posts[club]" value="<%= data.club %>" id="" />
+        </div>
+
+         <div  class="input-holder">
+                                <label for="title">title</label> 
+        <input required name="posts[title]" placeholder="🌟 Title: [YourTitle]" type="text" id="title"> 
+        </div> 
+        <div class="input-holder">
+          <label for="content">Content</label>
+          <textarea
+            required
+            rows="4"
+            name="posts[content]"
+            type="text"
+            id="content"
+          >
+<%= data.content %></textarea
+          >
+        </div>
+
+        <button type="submit" class="btn-sign-in btn-submit btn-google">
+          Update the discussion
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

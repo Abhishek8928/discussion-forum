@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <title>dashboard</title>
+  </head>
+  <body>
+    <%- include("../includes/navbar.ejs")  %>
+    <div class="new-post-wrapper">
+      <form id="form" action="/posts/new" method="post">
+        <div class="input-holder">
+          <label for="name">Select a club</label>
+          <select required name="posts[club]" name="" id="">
+            <option value="Web club">Web club</option>
+            <option value="Design club">Design club</option>
+            <option value="Tech club">Tech club</option>
+            <option value="Ai club">Ai club</option>
+            <option value="Startup club">Startup club</option>
+            <option value="Product club">Product club</option>
+            <option value="Finance club">Finance club</option>
+            <option value="Placement club">Placement club</option>
+          </select>
+        </div>
+
+        <div class="input-holder">
+          <label for="title">title</label>
+          <input
+            required
+            name="posts[title]"
+            placeholder="🌟 Title: [YourTitle]"
+            type="text"
+            id="title"
+          />
+        </div>
+        <div class="input-holder">
+          <label for="content">content</label>
+          <textarea
+            required
+            rows="4"
+            name="posts[content]"
+            type="text"
+            id="content"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-sign-in btn-submit btn-google">
+          Create Discussion
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

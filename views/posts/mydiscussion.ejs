@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" integrity="sha512-HXXR0l2yMwHDrDyxJbrMD9eLvPe3z3qL3PPeozNTsiHJEENxx8DH2CxmV05iwG0dwoz5n4gQZQyYLUNt1Wdgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/css/dashboard.css">
+        <link rel="stylesheet" href="/css/navbar.css">
+        
+    </head>
+<body>
+
+    <%- include("../includes/navbar.ejs") %>
+
+    <a href="/posts/new" class="add-ques-btn">
+        <svg width="16" height="16" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
+        <p>Create discussion</p>
+    </a>
+
+    
+    
+    <div class="main">
+        <div class="left-con">
+
+            <div class="box-block">
+                <div class="box-top">
+                    <h3 class="box-title">Club</h3>
+                    <svg fill="rgb(67,69,72)" width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16L6 10H18L12 16Z"></path></svg>
+                </div>
+                <div class="check-wrapper">
+                    <input id="selectAll" type="checkbox">
+                    <label for="selectAll">Web club</label>
+                </div>
+                <div class="check-wrapper">
+                    <input id="design" type="checkbox">
+                    <label for="design">Design Club</label>
+                </div>
+                <div class="check-wrapper">
+                    <input id="tech" type="checkbox">
+                    <label for="tech">Tech Club</label>
+                </div>
+                <div class="check-wrapper">
+                    <input id="ai" type="checkbox">
+                    <label for="ai">Ai Club</label>
+                </div>
+                <div class="check-wrapper">
+                    <input id="startup" type="checkbox">
+                    <label for="startup">Startup Club</label>
+                </div>
+                <div class="check-wrapper">
+                    <input id="product" type="checkbox">
+                    <label for="product">Product Club</label>
+                </div>
+                <div class="check-wrapper">
+                    <input id="finance" type="checkbox">
+                    <label for="finance">Finance Club</label>
+                </div>
+                <div class="check-wrapper">
+                    <input id="finance" type="checkbox">
+                    <label for="finance">Placement Club</label>
+                </div>
+            </div>
+
+
+
+
+           
+
+
+            <div class="box-block">
+                <div class="box-top">
+                    <h3 class="box-title">Showing</h3>
+                    <svg fill="rgb(67,69,72)" width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16L6 10H18L12 16Z"></path></svg>
+                </div>
+                <div class="check-wrapper">
+                    <input id="trending" type="checkbox">
+                    <label for="trending">Trending</label>
+                </div>
+                <div class="check-wrapper">
+                    <input id="latest" type="checkbox">
+                    <label for="open">Latest First</label>
+                </div>
+                <div class="check-wrapper">
+                    <input id="closed" type="checkbox">
+                    <label for="closed">Oldest First</label>
+                </div>
+                
+            </div>
+
+        </div>
+
+        
+        <div id="all-dought" class="right-con">
+            <div class="flash">
+                <div class="right-btn-wrapper">
+                    <form method="get" action="/posts">
+                        <button class="btn-all-dought  not-active">Explore Discussions</button>
+                    </form>
+                   
+                    <form action="/posts/mydiscussion">
+                        <button class="btn-my-dought active ">Your Discussions</button>
+                    </form>
+                </div>
+
+                <%- include("../includes/flash.ejs")  %>
+            </div>
+            
+
+            
+            
+            <div class="my-dought">
+                <% if(!userPost.length) {%>
+
+                        <div class="my-dought-empty">
+                            <div>
+                                
+                            <img src="https://unsplash-assets.imgix.net/empty-states/photos.png?auto=format&fit=crop&q=60" alt="">
+                            <p>"No discussions created by you yet! Be the initiator – Start a new discussion now!"</p>
+                            </div>
+                        </div>
+                    
+                <% } %>
+                <% if(userPost.length) {  %>
+            
+                    <% for(let myPost of userPost) { %>
+                        <div class="card">
+                            <div class="card-top">
+                                <div class="card-top-left">
+                                    <img class="user-logo" src="<%= myPost.createdBy.avatar %>" alt="">
+                                    <div class="user-details">
+                                        <h4 class="user-name"><%= myPost.createdBy.username %></h4>
+                                        <small class="time"><%= myPost.date[10] %></small>
+                                    </div>
+                                </div>
+                                <div class="card-top-right">
+                                    <div class="tag"><%= myPost.club %></div>
+                                </div>
+                            </div>
+                            <div class="card-bottom">
+                                <p><%= myPost.title %></p>
+                            </div>
+            
+                            <div class="card-footer">
+                                <div class="card-footer-left">
+                                    <div>
+                                        <p class="highlight-text"><svg width="18" height="18" fill="#fead01" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"></path></svg> <span><%= myPost.status %></span></p>
+                                    </div>
+                                    
+            
+                                    
+                                </div>
+                                <div class="card-footer-right">
+                                   
+        
+                                    <form method="post" action="/posts/<%= myPost.id %>?_method=DELETE">
+                                        <button class="ri-delete-bin-4-line"></button>
+                                    </form>
+                                    <form method="post" action="/posts/<%= myPost.id %>/edit">
+                                        
+                                        <button class="ri-edit-box-line"></button>
+                                    </form>
+                                    <i class="ri-more-2-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+    
+                    <% } %>
+                <% } %>
+            </div>
+            
+            
+        </div>
+    </div>
+    <script src="/js/flash.js"></script>
+    <script src="/js/toggle.js"></script>
+</body>
+</html>

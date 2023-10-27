@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css"
+      integrity="sha512-HXXR0l2yMwHDrDyxJbrMD9eLvPe3z3qL3PPeozNTsiHJEENxx8DH2CxmV05iwG0dwoz5n4gQZQyYLUNt1Wdgfg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/show.css" />
+    <title>dashboard</title>
+  </head>
+  <body>
+    <%- include("../includes/navbar.ejs") %>
+
+    <div class="background-img-top"></div>
+
+    <div class="d-flex-show-">
+      <div class="card-show-con-">
+        <div class="card-top">
+          <div class="card-top-left">
+            <img
+              class="user-logo"
+              src="<%= data.createdBy.avatar %>"
+              alt=""
+            />
+            <div class="user-details">
+              <h4 class="user-name"><%= data.createdBy.username %></h4>
+              <small class="time"><%=  formatRelativeTime(data.date) %></small>
+            </div>
+          </div>
+          <div class="card-top-right">
+            <div class="tag"><%= data.club %></div>
+          </div>
+        </div>
+
+        <div class="card-bottom">
+          <h2 class="card-bottom-title">
+            <%= data.title %>
+          </h2>
+          <p>
+            <%= data.content %>
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <% if(!(data.createdBy._id === curUser._id)) {%>
+
+      <div class="d-flex-show-">
+      <div class="card-show-con-">
+        <form method="post" action="/posts/show/<%= data.id %>">
+          <label for="comment">Contribute to the discussion :</label>
+          <textarea
+            placeholder="Share your thoughts..."
+            id="comment"
+            name="posts[comment]"
+            id=""
+            cols="30"
+            rows="4"
+          >
+"Share your thoughts... 😎"</textarea
+          >
+          <button class="button">Share Your Thoughts</button>
+        </form>
+
+        <hr />
+      </div>
+    </div>
+
+    <% } %>
+
+    <div class="d-flex-show-">
+      <div class="card-show-con-">
+        <div class="response-con">
+          <h1>Comment Showcase: Voices from the Community</h1>
+          <% if(data.response) {%>
+        
+            <% for(let response of data.response) { %>
+        
+              <div class="comment card-bottom">
+            <div class="card-top">
+              <div class="card-top-left">
+                <img
+                  class="user-logo"
+                  src="<%= response.responsedBy.avatar %>"
+                  alt=""
+                />
+                <div class="user-details">
+                  <h4 class="user-name"><%= response.responsedBy.username %></h4>
+                  <small class="time"><%= formatRelativeTime(response.date) %></small>
+                </div>
+              </div>
+              <div class="card-top-right"></div>
+            </div>
+            <p>
+             <%= response.comment %>
+            </p>
+          </div>
+
+              
+            <% } %>
+          
+          <% } %>
+          
+         
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

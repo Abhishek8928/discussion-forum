@@ -1,0 +1,82 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up - wallet</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" integrity="sha512-HXXR0l2yMwHDrDyxJbrMD9eLvPe3z3qL3PPeozNTsiHJEENxx8DH2CxmV05iwG0dwoz5n4gQZQyYLUNt1Wdgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="video-wrapper">
+                <video autoplay muted loop src="https://cdn.dribbble.com/uploads/48292/original/30fd1f7b63806eff4db0d4276eb1ac45.mp4?1689187515"></video>
+            </div>
+
+            <div class="form-wrapper">
+                <div class="form-con">
+                    <%- include("../includes/flash.ejs")  %>
+                   
+                    <h1 class="title">Create a new account</h1>
+                    <div  id="form-holder">
+                        
+                        <div class="select-avatar">
+                            <img  class="selected-ava" src="/Avatar/1.webp" alt="">
+                            <img src="/Avatar/2.webp" alt="">
+                            <img src="/Avatar/3.webp" alt="">
+                            <img src="/Avatar/4.webp" alt="">
+
+                            <img src="/Avatar/5.webp" alt="">
+                            <img src="/Avatar/6.webp" alt="">
+
+                            
+
+                        </div>
+
+                        
+                        
+                        <form action="/signup" method="post">
+                            <div class="input-holder ">
+                                <label for="avatar">Avatar</label>
+                                <input value="http://localhost:3000/Avatar/1.webp" type="text" placeholder="url or select from above images" name="newUser[avatar]" id="avatar" value="">
+                            </div>
+                            <div class="first-row-input">
+                                <div class="input-holder w-40">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="newUser[name]" id="name" value="">
+                                </div>
+                                <div  class="input-holder w-40">
+                                    <label for="userName"> username</label>
+                                    <input type="text" name="newUser[username]" id="userName" value="">
+                                </div>
+                            </div>
+                            <div  class="input-holder">
+                                <label for="email"> email</label>
+                                <input type="email" name="newUser[email]" id="email">
+                            </div>
+                            <div  class="input-holder">
+                                <label for="password">password</label>
+                                <input name="newUser[password]" placeholder="6+ character" type="password" id="password">
+                            </div>
+                            
+                            <button type="submit" class="btn-sign-in btn-submit btn-google">
+                                Create Account
+                            </button>
+
+                            <div id="bottom-text" class="">
+                                Already have a account? <a href="/login">Sign in</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/flash.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+
+<% if(success.length) { %>
+    
+        <h1 class="msg success">
+            <%= success %> 
+        </h1>
+   
+<% } else if(error.length) { %> 
+    <h1 class="msg danger">
+
+        <%- error %> 
+
+    </h1>
+<% } %> 
+

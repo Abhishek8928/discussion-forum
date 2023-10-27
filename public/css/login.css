@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    overflow: hidden;
+}
+html{
+    font-size: 10px;
+}
+.container{
+    width:100%;
+    height:100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.video-wrapper {
+    width:44rem;
+    height:100%;
+}
+.video-wrapper video{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.form-wrapper{
+    position: relative;
+}
+
+.form-con{
+    padding:7.2rem 3.8rem;
+    width:50rem;
+    margin-left: 6rem;
+}
+.title{
+    font-weight: 900;
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+}
+.btn-google{
+    background-color: #fff;
+    border:0.02rem solid #e7e7e9;
+    padding:1.4rem 0;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+.btn-google > span{
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.divider,.divider2{
+    height: 0.06rem;
+    margin: 3rem 0;
+    padding: 0;
+    overflow: visible;
+    border: none;
+    background-color: #e7e7e9;
+    color: #6e6d7a;
+    text-align: center;
+}
+
+.divider::after{
+    content: 'or Sign in with email';
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 2.4rem;
+    font-size: 1.2rem;
+    background: #fff;
+}
+.divider2::after{
+    content: "or";
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 1.6rem;
+    font-size: 1.2rem;
+    background: #fff;
+}
+.input-holder{
+    margin-bottom: 2rem;
+}
+.input-holder> label{
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    display: inline-block;
+}
+.input-holder> input,select,textarea {
+    width:100%;
+    padding:1.2rem 1.2rem;
+    border-radius: 0.4rem;
+    border:1px solid #fff;
+    background-color: rgb(243,243,244);
+}
+.input-holder > input:focus,select:focus,input:hover,select:focus{
+    outline: none;
+    background-color: #fff;
+    border:1px solid #ccc;
+}
+.btn-sign-in{
+    background-color: rgb(12,13,34);
+    color:white;
+    border: none;
+    margin-bottom: 2rem;
+}
+.btn-sign-in:hover{
+    background-color: rgba(12,13,34,0.8);
+}
+
+#bottom-text > a,#bottom-text{
+    text-align: center;
+    font-size: 1.4rem;
+    color:#6e6d7a !important;
+}
+
+
+.dark-mode{
+    background-color: black;
+    color:white;
+}
+.bottom-desc{
+    text-align: center;
+    font-size: 0.7rem;
+    margin: 2.4rem 0;
+    color:#6e6d7a !important;
+}
+.bottom-desc > a{
+    text-decoration: underline;
+    color:black;
+}
+.d-none{
+    display: none;
+}
+
+.first-row-input{
+    display: flex;
+    justify-content: space-between;
+}
+.w-40{
+    
+    width: 46%;
+}
+.success{
+    background-color:rgb(213,237,219);
+}
+.msg{
+    font-size: 12px;
+    padding:0.6rem 0.6rem;
+    border-radius: 4px;
+    margin:1.2rem 0;
+    text-align: center;
+}
+.danger{
+    background-color: rgb(249,214,218);
+}
+.d-none{
+    display: none;
+}
+
+.new-post-wrapper{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#create{
+    width:80rem;
+}
+.select-avatar > img{
+    width:4rem;
+    height:4rem;
+    border-radius: 50%;
+    margin-right: 0.2rem;
+    
+}
+#form{
+    width:50rem;
+}
+.selected-ava{
+    border:0.01rem solid #000;
+    padding: 0.2rem;
+}
+@media (max-width:1031px) {
+    .video-wrapper{
+        display: none;
+    }
+    .container{
+        justify-content: center;
+    }
+    .form-con{
+        padding:6rem 2.4rem;
+        width:33rem;
+        margin-left: 0;
+    }
+}
+
+@media (max-width:440px) {
+    .video-wrapper{
+        display: none;
+    }
+    .container{
+        justify-content: center;
+    }
+    .form-con{
+        padding:4rem 2.4rem;
+        width:30rem;
+        margin-left: 0;
+    }
+}
