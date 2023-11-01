@@ -41,13 +41,7 @@ app.use(passport.session());
 
 passport.use(new LocalStrategy(User.authenticate()));
 
-passport.serializeUser((user, done) => {
-  done(null, user);
-});
 
-passport.deserializeUser((user, done) => {
-  done(null, user);
-});
 
 
 passport.serializeUser(User.serializeUser());
