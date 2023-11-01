@@ -22,7 +22,7 @@ Router.get("/", async (req, res) => {
 
     const seconds = Math.floor(timeDifference / 1000);
     if (seconds < 60) {
-      return "just now";
+      return "asked less than a minute ago";
     }
 
     const minutes = Math.floor(seconds / 60);
@@ -58,7 +58,9 @@ Router.get("/", async (req, res) => {
 });
 Router.post("/show/:id", async (req, res) => {
   let { id } = req.params;
-  let data = await new Response(req.body.posts);
+  console.log(id)
+  let data = await new Response(req.body.post);
+  console.log(req.body)
   data.responsedBy = req.user._id;
   data.save();
   let post = await Post.findById(id);
@@ -89,12 +91,12 @@ Router.get("/show/:id", async (req, res) => {
 
     const seconds = Math.floor(timeDifference / 1000);
     if (seconds < 60) {
-      return "just now";
+      return "asked less than a minute ago";
     }
 
     const minutes = Math.floor(seconds / 60);
     if (minutes < 60) {
-      return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+      return `asked ${minutes} minute${minutes > 1 ? "s" : ""} ago`;
     }
 
     const hours = Math.floor(minutes / 60);
@@ -152,6 +154,14 @@ Router.post("/new", async (req, res) => {
   req.flash("success", "discussion created successfully 🎉");
   res.redirect(`/posts`);
 });
+// to update the status of the post
+
+Router.put("/show/:id/res/:postid", async (req, res) => {
+  
+  let { id, postid } = req.params;                                                     
+  await Post.findByIdAndUpdate(id, { status: "Resolved" });
+  res.redirect(`/posts/show/${id}`)
+})
 // logout route -> to terminate the user from the session
 Router.get("/logout", (req, res) => {
   req.logout((err) => {

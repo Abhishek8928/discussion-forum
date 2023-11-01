@@ -14,7 +14,7 @@ html{
 :root{
     --white : #fff;
     --black:#000;
-    --light-green:rgb(42,212,118);
+    --light-green:#2ad476;
     --light-grey:#656d76;
     --box-shadow:0.5rem 0.5rem 0 rgb(233 236 239 / 5);
 

@@ -19,102 +19,164 @@
   <body>
     <%- include("../includes/navbar.ejs") %>
 
-    <div class="background-img-top"></div>
-
-    <div class="d-flex-show-">
-      <div class="card-show-con-">
+    <div class="main-container">
+      <div class="inner-container">
         <div class="card-top">
           <div class="card-top-left">
-            <img
-              class="user-logo"
-              src="<%= data.createdBy.avatar %>"
-              alt=""
-            />
+            <img class="user-logo" src="<%= data.createdBy.avatar %>" alt="" />
             <div class="user-details">
               <h4 class="user-name"><%= data.createdBy.username %></h4>
-              <small class="time"><%=  formatRelativeTime(data.date) %></small>
+              <small class="time"><%= formatRelativeTime(data.date) %></small>
             </div>
           </div>
           <div class="card-top-right">
             <div class="tag"><%= data.club %></div>
           </div>
         </div>
-
-        <div class="card-bottom">
-          <h2 class="card-bottom-title">
-            <%= data.title %>
-          </h2>
-          <p>
-            <%= data.content %>
-          </p>
-        </div>
-      </div>
-
-
-    </div>
-
-    <% if(!(data.createdBy._id === curUser._id)) {%>
-
-      <div class="d-flex-show-">
-      <div class="card-show-con-">
-        <form method="post" action="/posts/show/<%= data.id %>">
-          <label for="comment">Contribute to the discussion :</label>
-          <textarea
-            placeholder="Share your thoughts..."
-            id="comment"
-            name="posts[comment]"
-            id=""
-            cols="30"
-            rows="4"
-          >
-"Share your thoughts... 😎"</textarea
-          >
-          <button class="button">Share Your Thoughts</button>
-        </form>
-
-        <hr />
-      </div>
-    </div>
-
-    <% } %>
-
-    <div class="d-flex-show-">
-      <div class="card-show-con-">
-        <div class="response-con">
-          <h1>Comment Showcase: Voices from the Community</h1>
-          <% if(data.response) {%>
-        
-            <% for(let response of data.response) { %>
-        
-              <div class="comment card-bottom">
-            <div class="card-top">
-              <div class="card-top-left">
-                <img
-                  class="user-logo"
-                  src="<%= response.responsedBy.avatar %>"
-                  alt=""
-                />
-                <div class="user-details">
-                  <h4 class="user-name"><%= response.responsedBy.username %></h4>
-                  <small class="time"><%= formatRelativeTime(response.date) %></small>
-                </div>
-              </div>
-              <div class="card-top-right"></div>
-            </div>
-            <p>
-             <%= response.comment %>
-            </p>
+        <div class="show-body">
+          <p><%= data.content %></p>
+          <div class="show-img">
+            <img src="https://source.unsplash.com/200x200/?reactjs" alt="">
+            <img src="https://source.unsplash.com/200x200/?ai" alt="">
           </div>
-
-              
-            <% } %>
-          
-          <% } %>
-          
-         
-          
         </div>
+
+        <div class="card-footer">
+                                <div class="card-footer-left">
+                                    <% if(data.status === "Open") {%>
+
+                                      <div>
+                                        <p class="highlight-text"><svg width="18" height="18" fill="#fead01" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"></path></svg> <span><%= data.status %></span></p>
+                                    </div>
+
+
+                                    <% } else if(data.status === "Resolved"){ %>
+                                      <div>
+                                        <p  class="highlight-text ">
+                                          <svg class="success" width="18" height="18" fill="#2ad476" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z"></path></svg><span><%= data.status %></span></p>
+                                    </div>
+
+                                    <%  } %>
+
+                                    <div class="no-of-ans">
+                    <p class="highlight-text">
+                       <div class="img-hol">
+                        <% if(data.response.length == 0) {%>
+                          <p class="highlight-text"><span class="bold">+<%= data.response.length %> </span>Answered</p>
+
+                        <% } else if(data.response.length == 1) {%>
+                          <% for(let i = 0 ; i < 1;i++) {%>
+
+                          <img src="<%= data.response[i]?.responsedBy?.avatar %>" alt="">
+                          <p class="highlight-text"><span class="bold">+<%= data.response.length %> </span>Answered</p>
+                        <%}%>
+                        <% } else if(data.response.length == 2) { %>
+
+                           <% for(let i = 0 ; i < 1;i++) {%>
+
+                          <img src="<%= data.response[i]?.responsedBy?.avatar %>" alt="">
+                
+                        <%}%>
+                        <p class="highlight-text"><span class="bold">+<%= data.response.length %> </span>Answered</p>
+
+                        <%  } else if(data.response.length) {%>
+
+
+                           <% for(let i = 0 ; i < 3;i++) {%>
+
+                          <img src="<%= data.response[i]?.responsedBy?.avatar %>" alt="">
+                          
+                        <%}%>
+                        <p class="highlight-text"><span class="bold">+<%= data.response.length %> </span>Answered</p>
+                        <% } %>
+
+                        
+                       </div>
+                      </p>
+
+                      
+                      
+                  </div>
+                  <div>
+                    <p class="highlight-text">
+                      <svg width="18" height="18"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.0003 3C17.3924 3 21.8784 6.87976 22.8189 12C21.8784 17.1202 17.3924 21 12.0003 21C6.60812 21 2.12215 17.1202 1.18164 12C2.12215 6.87976 6.60812 3 12.0003 3ZM12.0003 19C16.2359 19 19.8603 16.052 20.7777 12C19.8603 7.94803 16.2359 5 12.0003 5C7.7646 5 4.14022 7.94803 3.22278 12C4.14022 16.052 7.7646 19 12.0003 19ZM12.0003 16.5C9.51498 16.5 7.50026 14.4853 7.50026 12C7.50026 9.51472 9.51498 7.5 12.0003 7.5C14.4855 7.5 16.5003 9.51472 16.5003 12C16.5003 14.4853 14.4855 16.5 12.0003 16.5ZM12.0003 14.5C13.381 14.5 14.5003 13.3807 14.5003 12C14.5003 10.6193 13.381 9.5 12.0003 9.5C10.6196 9.5 9.50026 10.6193 9.50026 12C9.50026 13.3807 10.6196 14.5 12.0003 14.5Z"></path></svg><span class="bold">1222</span>Views
+                       </p>
+
+
+                  </div>
+                  
+                                    
+            
+                                    
+                                </div>
+                                <div class="card-footer-right">
+                                   
+        
+                                  
+                                    <i class="ri-more-2-fill"></i>
+                                </div>
+                            </div>
       </div>
     </div>
+
+    
+    <div class="res-main-container">
+       <div class="respose-con">
+      <div class="no-response">
+        <h2><%= data.response.length %> Answer </h2>
+      </div> 
+
+      <% for(response of data.response) {%>
+
+        <div class="res-card">
+        <div class="res-left w-20">
+          <img src="<%= response.responsedBy.avatar %>" alt="">
+        </div>
+        <div class="res-right w-80">
+            <div class="user-details">
+              <h4 class="user-name"><%= response.responsedBy?.username %></h4>
+              <small class="time"><%= formatRelativeTime(response.date) %></small>
+            </div>
+            <p><%= response.comment %></p>
+
+
+             <% if (data.createdBy.id == curUser.id) {%>
+
+              <form method="post" action="/posts/show/<%= data.id %>/res/<%= response.responsedBy.id %>?_method=PUT">
+              <button><svg width="18px" height="18px" fill="dodgerblue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z"></path></svg>Mark this as answer</button>
+            </form>
+            <% } %>
+            
+        </div>
+      </div>
+
+      <% } %>
+    </div>
+
+    </div>
+    <div class="pos-rel">
+        <% if(data.status === "Resolved")  { %>
+          <div class="flex">
+            <p class="highlight-text ">
+                                          <svg class="success" width="18" height="18" fill="#2ad476" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z"></path></svg><span><%= data.status %></span></p>
+          </div>
+          
+
+
+        <% } else if(data.status === "Open") { %>
+
+          <div class="flex">
+           <form class="bot-only" method="post" action="/posts/show/<%= data.id %>">
+            <input class="reply-input" name="post[comment]" type="" placeholder="Reply">
+            <button class="send" href=""><i class="bi bi-send"></i></button>
+          </form>
+          <button class="img-send" href=""><i class="bi bi-camera"></i></button>
+          <button type="submit" class="img-send"><i class="bi bi-link"></i></button>
+      
+        </div>
+        <% } %>
+      
+    </div>
+    
   </body>
 </html>

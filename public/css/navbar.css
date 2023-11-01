@@ -2,7 +2,7 @@ html{
   font-size: 10px;
 }
 nav{
-    height:10vh !important;
+    height:8vh !important;
     display: flex;
     justify-content: space-between;
     padding:1.6rem 4rem;
@@ -21,6 +21,13 @@ nav{
 
 .button-wrapper-auth > a:first-child{
     background-color: #464aff;
+}
+
+.nav-logo{
+  text-decoration: none;
+  color:#000;
+  font-size: 1.8rem;
+  font-weight: bolder;
 }
 
 .nav-logo-user{
