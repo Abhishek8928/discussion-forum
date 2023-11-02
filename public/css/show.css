@@ -95,7 +95,7 @@
 .res-main-container{
     display:flex;
     justify-content: center;
-    background-color: #eae9e9;
+    background-color: #f1f1f1;
 }
 
 .no-response > h2{

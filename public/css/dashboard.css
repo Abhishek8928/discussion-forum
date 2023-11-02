@@ -1,6 +1,6 @@
 :root{
     --light-grey-col:#e9e8e8;
-    --dark-grey-col:#f4f4f5;
+    --dark-grey-col:#f1f1f1;
     --dark-blue-col:rgb(70,74,255);
     --dark-orange-col:rgb(255,140,19);
 }
@@ -48,7 +48,7 @@ nav  i {
 }
 
 .main{
-    background-color: var(--dark-grey-col);
+    background-color: #f1f1f1;
     width:100%;
     display: flex;
     min-height:100vh;
