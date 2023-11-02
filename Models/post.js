@@ -28,6 +28,10 @@ const Post = new Schema({
         type: Date,
         default:new Date(Date.now())
     },
+    bestRes: {
+        type: Schema.Types.ObjectId,
+        ref: "Response",
+    },
     status: {
         type: String,
         default:"Open",

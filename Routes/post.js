@@ -156,10 +156,10 @@ Router.post("/new", async (req, res) => {
 });
 // to update the status of the post
 
-Router.put("/show/:id/res/:postid", async (req, res) => {
+Router.put("/show/:id/res/:resId", async (req, res) => {
   
-  let { id, postid } = req.params;                                                     
-  await Post.findByIdAndUpdate(id, { status: "Resolved" });
+  let { id, resId } = req.params;                                                     
+  await Post.findByIdAndUpdate(id, { status: "Resolved",bestRes:resId });
   res.redirect(`/posts/show/${id}`)
 })
 // logout route -> to terminate the user from the session
