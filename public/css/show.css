@@ -95,7 +95,7 @@
 .res-main-container{
     display:flex;
     justify-content: center;
-    background-color: #eae9e9;
+    background-color: #f1f1f1;
 }
 
 .no-response > h2{
@@ -125,7 +125,7 @@
 
 .res-right > p{
     padding:1.6rem 0;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 .res-right > form > button{
     border: none;
@@ -135,5 +135,16 @@
     gap:1.2rem;
     color:dodgerblue;
     font-size: 1.4rem;
+    background-color: #eae9e9;
 }
-
+.round-box{
+    width:2.2rem;
+    height:2.2rem;
+    border-radius: 50%;
+    background-color: limegreen;
+    display: grid;
+    place-items: center;
+}
+.best-answer{
+    color:rgb(0,0,0) !important ;
+}

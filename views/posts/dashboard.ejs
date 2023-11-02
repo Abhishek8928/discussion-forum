@@ -147,7 +147,36 @@
                                     </div>
                                 </div>
                                 <div class="card-top-right">
-                                    <div class="tag"><%= post.club %></div>
+                                
+                                    <% if(post.club == 'Ai club') { %>
+                                      <div class="tag ai-c"><%= post.club %></div>
+                                      
+                                   <% } else if(post.club == 'Web club') {%>
+
+                                    <div class="tag web-c"><%= post.club %></div>
+                                    <% } else if(post.club == 'Design club') {%>
+
+                                      <div class="tag design-c"> <%= post.club %> </div>
+
+                                    <%}  else if(post.club == 'Tech club') {%>
+                                       <div class="tag tech-c"> <%= post.club %> </div>
+
+                                    <%}  else if(post.club == 'Startup club') {%>
+
+                                       <div class="tag start-c"> <%= post.club %> </div>
+
+                                    <%}  else if(post.club == 'Finance club') {%>
+
+                                      <div class="tag fin-c"> <%= post.club %> </div>
+
+                                    <%}  else if(post.club == 'Product club') {%>
+                                      <div class="tag product-c"> <%= post.club %> </div>
+
+                                    <%}  else if(post.club == 'Banglore club') {%>
+
+                                      <div class="tag ban-c"> <%= post.club %> </div>
+
+                                      <% } %>
                                 </div>
                             </div>
                             <div class="card-bottom">
@@ -166,7 +195,7 @@
                                 <% } else if(post.status === "Resolved") {%>
                                   <div>
                                         <p  class="highlight-text ">
-                                          <svg class="success" width="18" height="18" fill="#2ad476" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z"></path></svg><span><%= post.status %></span></p>
+                                          <svg class="success br-50 " width="18" height="18" fill="#2ad476" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z"></path></svg><span><%= post.status %></span></p>
                                     </div>
 
 

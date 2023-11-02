@@ -30,8 +30,37 @@
             </div>
           </div>
           <div class="card-top-right">
-            <div class="tag"><%= data.club %></div>
-          </div>
+                                
+                                    <% if(data.club == 'Ai club') { %>
+                                      <div class="tag ai-c"><%= data.club %></div>
+                                      
+                                   <% } else if(data.club == 'Web club') {%>
+
+                                    <div class="tag web-c"><%= data.club %></div>
+                                    <% } else if(data.club == 'Design club') {%>
+
+                                      <div class="tag design-c"> <%= data.club %> </div>
+
+                                    <%}  else if(data.club == 'Tech club') {%>
+                                       <div class="tag tech-c"> <%= data.club %> </div>
+
+                                    <%}  else if(data.club == 'Startup club') {%>
+
+                                       <div class="tag start-c"> <%= data.club %> </div>
+
+                                    <%}  else if(data.club == 'Finance club') {%>
+
+                                      <div class="tag fin-c"> <%= data.club %> </div>
+
+                                    <%}  else if(data.club == 'Product club') {%>
+                                      <div class="tag product-c"> <%= data.club %> </div>
+
+                                    <%}  else if(data.club == 'Banglore club') {%>
+
+                                      <div class="tag ban-c"> <%= data.club %> </div>
+
+                                      <% } %>
+                                </div>
         </div>
         <div class="show-body">
           <p><%= data.content %></p>
@@ -142,8 +171,26 @@
 
              <% if (data.createdBy.id == curUser.id) {%>
 
-              <form method="post" action="/posts/show/<%= data.id %>/res/<%= response.responsedBy.id %>?_method=PUT">
-              <button><svg width="18px" height="18px" fill="dodgerblue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z"></path></svg>Mark this as answer</button>
+              <form method="post" action="/posts/show/<%= data.id %>/res/<%= response.id %>?_method=PUT">
+              <% if(data.status === "Resolved") { %>
+                <!-- <%= data.bestRes %>
+                <%= response.responsedBy.id%> -->
+                <% if(data.bestRes == response.id) { %>
+                  
+                  <button class="best-answer">
+                    <div class="round-box">
+
+  <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24"><path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z"></path></svg>
+                    </div>
+                    
+                  Best Answer</button>
+                <% } %>
+              <% } else { %>
+                <button>
+                  
+                  <svg width="18px" height="18px" fill="dodgerblue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z"></path></svg>
+                Mark this as answer</button>
+              <%  } %>
             </form>
             <% } %>
             
