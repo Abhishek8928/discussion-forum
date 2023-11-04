@@ -90,34 +90,19 @@
                                     <div class="no-of-ans">
                     <p class="highlight-text">
                        <div class="img-hol">
-                        <% if(data.response.length == 0) {%>
-                          <p class="highlight-text"><span class="bold">+<%= data.response.length %> </span>Answered</p>
+                        
+                        <% if(data.response.length)  { %>
+                          <% for(let avatarImg of data.response) { %>
 
-                        <% } else if(data.response.length == 1) {%>
-                          <% for(let i = 0 ; i < 1;i++) {%>
+                            <img src="<%= avatarImg.responsedBy.avatar %>" alt="">
 
-                          <img src="<%= data.response[i]?.responsedBy?.avatar %>" alt="">
-                          <p class="highlight-text"><span class="bold">+<%= data.response.length %> </span>Answered</p>
-                        <%}%>
-                        <% } else if(data.response.length == 2) { %>
+                         <% } %>
 
-                           <% for(let i = 0 ; i < 1;i++) {%>
-
-                          <img src="<%= data.response[i]?.responsedBy?.avatar %>" alt="">
-                
-                        <%}%>
-                        <p class="highlight-text"><span class="bold">+<%= data.response.length %> </span>Answered</p>
-
-                        <%  } else if(data.response.length) {%>
-
-
-                           <% for(let i = 0 ; i < 3;i++) {%>
-
-                          <img src="<%= data.response[i]?.responsedBy?.avatar %>" alt="">
-                          
-                        <%}%>
-                        <p class="highlight-text"><span class="bold">+<%= data.response.length %> </span>Answered</p>
                         <% } %>
+
+                        
+                        <p class="highlight-text"><span class="bold">+<%= data.response.length %> </span>Answered</p>
+                        
 
                         
                        </div>

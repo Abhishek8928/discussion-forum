@@ -57,9 +57,9 @@ app.use((req, res, next) => {
 
 
 
-
-app.use("/posts", postRouter);
 app.use("/", userRouter);
+app.use("/posts", postRouter);
+
 
 
 

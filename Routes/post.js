@@ -16,6 +16,13 @@ Router.get("/", async (req, res) => {
     },
   });
   allPost.reverse();
+  for (let post of allPost) {
+
+    for (let i = 0; i < post.response.length; i++) {
+
+       console.log(post?.response[i])
+    }
+  }
   function formatRelativeTime(originalTimestamp) {
     const currentTimestamp = new Date();
     const timeDifference = currentTimestamp - originalTimestamp;
@@ -58,14 +65,12 @@ Router.get("/", async (req, res) => {
 });
 Router.post("/show/:id", async (req, res) => {
   let { id } = req.params;
-  console.log(id)
   let data = await new Response(req.body.post);
   console.log(req.body)
   data.responsedBy = req.user._id;
   data.save();
   let post = await Post.findById(id);
   post.response.push(data._id);
-  console.log(post);
   post.save();
   res.redirect(`/posts/show/${id}`);
 });

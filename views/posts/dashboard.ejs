@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="/css/dashboard.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/loco.css" />
     <script>
    
 </script>
@@ -129,7 +130,8 @@
           <%- include("../includes/flash.ejs") %>
         </div>
 
-        <div class="all-dought">
+        <div id="loco-con">
+          <div class="all-dought">
           <% if(allPost.length) {%> 
             <% for(let post of allPost) {%>
 
@@ -176,8 +178,10 @@
 
                                       <div class="tag ban-c"> <%= post.club %> </div>
 
+                                      <% } else  { %>
+                                      <div class="tag place-c"> <%= post.club %> </div>
                                       <% } %>
-                                </div>
+                                      </div>
                             </div>
                             <div class="card-bottom">
                                 <p><%= post.title %></p>
@@ -205,34 +209,16 @@
                                     <div class="no-of-ans">
                     <p class="highlight-text">
                        <div class="img-hol">
-                        <% if(post.response.length == 0) {%>
-                          <p class="highlight-text"><span class="bold">+<%= post.response.length %> </span>Answered</p>
+                        <% if(post.response.length)  { %>
+                          <% for(let avatarImg of post.response) { %>
 
-                        <% } else if(post.response.length == 1) {%>
-                          <% for(let i = 0 ; i < 1;i++) {%>
+                            <img src="<%= avatarImg.responsedBy.avatar %>" alt="">
 
-                          <img src="<%= post.response[i]?.responsedBy?.avatar %>" alt="">
-                          <p class="highlight-text"><span class="bold">+<%= post.response.length %> </span>Answered</p>
-                        <%}%>
-                        <% } else if(post.response.length == 2) { %>
+                         <% } %>
 
-                           <% for(let i = 0 ; i < 1;i++) {%>
-
-                          <img src="<%= post.response[i]?.responsedBy?.avatar %>" alt="">
-                
-                        <%}%>
-                        <p class="highlight-text"><span class="bold">+<%= post.response.length %> </span>Answered</p>
-
-                        <%  } else if(post.response.length) {%>
-
-
-                           <% for(let i = 0 ; i < 3;i++) {%>
-
-                          <img src="<%= post.response[i]?.responsedBy?.avatar %>" alt="">
-                          
-                        <%}%>
-                        <p class="highlight-text"><span class="bold">+<%= post.response.length %> </span>Answered</p>
                         <% } %>
+                        
+                        <p class="highlight-text"><span class="bold">+<%= post.response.length %> </span>Answered</p>
 
                         
                        </div>
@@ -242,13 +228,41 @@
                     </div>
                     
                     <p class="highlight-text bold">
-                      <span class="bold"><i class="bi bi-eye"></i> </span>
+                      <span class="bold">👁️ </span>
                        1222 Views</p>
             
                                     
                                 </div>
                                 <div class="card-footer-right">
+                                  <% if(curUser) { %>
+                                    <% if(post.createdBy.id === curUser.id) {  %>
+
+                                    <form method="post" action="/posts/<%= post.id %>?_method=DELETE">
+                                          <button class="edit-post">
+  <span class="edit-tooltip">delete Post</span>
+  <span class="edit-icon">🗑️</span>
+  <!-- <span class="edit-icon">🧹</span> -->
+</button>
+                                        
+                                    </form>
+                                    <form method="post" action="/posts/<%= post.id %>/edit">
+                                        
+                                        <button class="edit-post">
+  <span class="edit-tooltip">Edit Post</span>
+  <span class="edit-icon">⚙️</span>
+</button>
+                                    </form>
                                    
+
+                                  <% } %>
+
+                                  
+                                  <% } %>
+
+
+                                
+                                  
+                                  
         
                                   
                                     <i class="ri-more-2-fill"></i>
@@ -258,8 +272,10 @@
           <% } %> <%}%>
         </div>
       </div>
+        </div>
       </div>
     </div>
+    
     <script src="/js/flash.js"></script>
     <script src="/js/toggle.js"></script>
   </body>

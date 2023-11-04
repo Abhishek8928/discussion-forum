@@ -12,6 +12,11 @@ const isLogged = require("../Middleware/loggedin.js")
   2. get the data inside the /login routes with method=post
 */
 
+Router.get("/", (req, res) => {
+    res.render("./posts/index.ejs")
+})
+
+
 Router.get("/login",isLogged, (req, res) => {
     res.render("./users/login.ejs");
 })

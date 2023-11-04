@@ -151,7 +151,7 @@
 
                                     <%}  else if(myPost.club == 'Startup club') {%>
 
-                                       <div class="tag start-c"> <%= m.club %> </div>
+                                       <div class="tag start-c"> <%= myPost.club %> </div>
 
                                     <%}  else if(myPost.club == 'Finance club') {%>
 
@@ -195,11 +195,19 @@
                                    
         
                                     <form method="post" action="/posts/<%= myPost.id %>?_method=DELETE">
-                                        <button class="ri-delete-bin-4-line"></button>
+                                          <button class="edit-post">
+  <span class="edit-tooltip">delete Post</span>
+  <span class="edit-icon">🗑️</span>
+  <!-- <span class="edit-icon">🧹</span> -->
+</button>
+                                        
                                     </form>
                                     <form method="post" action="/posts/<%= myPost.id %>/edit">
                                         
-                                        <button class="ri-edit-box-line"></button>
+                                        <button class="edit-post">
+  <span class="edit-tooltip">Edit Post</span>
+  <span class="edit-icon">⚙️</span>
+</button>
                                     </form>
                                     <i class="ri-more-2-fill"></i>
                                 </div>

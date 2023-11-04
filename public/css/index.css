@@ -65,5 +65,67 @@ body{
 }
 .btn-login{
     color:var(--white);
+}
 
+.hero-container{
+    width:90rem;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color:#fff;
+}
+
+.hero-container > .hero-title{
+    text-align: center;
+    font-size: 6.4rem;
+    padding-bottom: 2rem;
+}
+.hero-container > .hero-desc{
+    text-align: center;
+    font-size: 2.4rem;
+    color:var(--light-grey);
+    padding-bottom: 2rem;
+}
+.hero-btn{
+    display: flex;
+    justify-content: center;
+    gap:2rem;
+    padding:2rem 0;
+}
+#bottone1,.bro-btn {
+ padding-left: 33px;
+ padding-right: 33px;
+ padding-bottom: 16px;
+ padding-top: 16px;
+ border-radius: 9px;
+ background: #d5f365;
+ border: none;
+ font-family: inherit;
+ text-align: center;
+ cursor: pointer;
+ transition: 0.4s;
+ display: inline-block;
+}
+.bro-btn{
+    background-color: #fff !important;
+}
+#bottone1:hover {
+ box-shadow: 7px 5px 56px -14px #C3D900;
+}
+
+#bottone1:active {
+ transform: scale(0.97);
+ box-shadow: 7px 5px 56px -10px #C3D900;
+}
+
+
+
+.bro-btn:hover {
+ box-shadow: 7px 5px 56px -14px #fff;
+}
+
+.bro-btn:active {
+ transform: scale(0.97);
+ box-shadow: 7px 5px 56px -10px #fff;
 }
