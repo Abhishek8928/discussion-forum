@@ -89,7 +89,7 @@ Router.get("/mydiscussion", async (req, res) => {
 });
 
 // show routes -> to show the specific posts in details
-Router.get("/show/:id", async (req, res) => {
+Router.get("/show/:id",isLogged, async (req, res) => {
   function formatRelativeTime(originalTimestamp) {
     const currentTimestamp = new Date();
     const timeDifference = currentTimestamp - originalTimestamp;

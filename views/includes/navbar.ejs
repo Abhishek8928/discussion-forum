@@ -9,7 +9,7 @@
         <% if(!curUser) { %>
 
             <div class="button-wrapper-auth">
-                <a class="btn-all-dought" href="/login">Login</a>
+                <a style="color:#fff" class="btn-all-dought" href="/login">Login</a>
                 <a href="/signup">Signup</a>
             </div>
 
@@ -17,7 +17,7 @@
 
         <% if(curUser) { %>
 
-           <img class="nav-logo-user" src="<%= curUser.avatar %>" alt="">
+           <a href="/profile"><img class="nav-logo-user" src="<%= curUser.avatar %>" alt=""></a>
           <form method="get" action="/posts/logout">
             <button  class="Btn">
   
