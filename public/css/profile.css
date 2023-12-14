@@ -1,0 +1,68 @@
+
+
+.profile-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12rem;
+}
+
+.profile-container{
+    width:90rem;
+    box-shadow: 0.5rem 0.5rem 0 rgb(233 236 239 / 50%);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 12px;
+    padding:1.6rem;
+}
+
+.p-title{
+    font-size: 2.8rem;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+}
+.profile-img{
+    width:6rem;
+    height:6rem;
+    border-radius: 50%;
+}
+.input-holder{
+    padding-bottom: 2rem;
+}
+.input-holder> label{
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+.input-holder> input,select,textarea {
+    width:100%;
+    padding:1.2rem 1.2rem;
+    border-radius: 0.4rem;
+    border:1px solid #fff;
+    background-color: rgb(243,243,244);
+}
+.input-holder > input:focus,select:focus,input:hover,select:focus{
+    outline: none;
+    background-color: #fff;
+    border:1px solid #ccc;
+}
+.btn-sign-in{
+    background-color: rgb(12,13,34) !important;
+    color:white;
+    border: none;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.btn-google{
+    background-color: #fff;
+    border:0.02rem solid #e7e7e9;
+    padding:1.4rem 0;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}

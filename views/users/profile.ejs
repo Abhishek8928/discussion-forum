@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devnest - <%= user.name %></title>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <%- include("../includes/navbar.ejs") %>
+
+    <div class="profile-main">
+        <div class="profile-container">
+            <h1 class="p-title">Personal Info</h1>
+            <img src="<%= user.avatar %>" alt="" class="profile-img">
+            <form action="/login" method="post">
+                <div class="input-holder">
+                  <label for="username">Username</label>
+                  <input
+                    placeholder="Your username"
+                    name="username"
+                    type="text"
+                    id="username"
+                    value="<%= user.username %>"
+                  />
+                </div>
+                <div class="input-holder">
+                  <label for="name">Name</label>
+                  <input
+                    placeholder=""
+                    name="name"
+                    type="text"
+                    id="name"
+                    value="<%= user.name %>"
+                  />
+                </div>
+                <div class="input-holder">
+                  <label for="email">email</label>
+                  <input
+                    placeholder="Your password"
+                    name="email"
+                    type="email"
+                    id="email"
+                    value="<%= user.email %>"
+                  />
+                </div>
+
+                <button type="submit" class="btn-sign-in btn-submit btn-google">
+                  Save Changes
+                </button>
+                
+              </form>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -66,7 +66,6 @@ Router.get("/", async (req, res) => {
 Router.post("/show/:id", async (req, res) => {
   let { id } = req.params;
   let data = await new Response(req.body.post);
-  console.log(req.body)
   data.responsedBy = req.user._id;
   data.save();
   let post = await Post.findById(id);
@@ -125,6 +124,9 @@ Router.get("/show/:id",isLogged, async (req, res) => {
     return originalTimestamp.toLocaleDateString(undefined, options);
   }
   let { id } = req.params;
+
+  console.log(req.user.id)
+  
   const data = await Post.findById(id)
     .populate("createdBy")
     .populate({
@@ -135,7 +137,10 @@ Router.get("/show/:id",isLogged, async (req, res) => {
         model: "User", // Model to reference
       },
     });
-  console.log(data.date);
+  if (! data.views.includes(req.user.id)) {
+    data.views.push(req.user.id);
+    data.save();
+  }
   res.render("./posts/show.ejs", { data, formatRelativeTime });
 });
 
