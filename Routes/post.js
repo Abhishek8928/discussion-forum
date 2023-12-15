@@ -124,8 +124,6 @@ Router.get("/show/:id",isLogged, async (req, res) => {
     return originalTimestamp.toLocaleDateString(undefined, options);
   }
   let { id } = req.params;
-
-  console.log(req.user.id)
   
   const data = await Post.findById(id)
     .populate("createdBy")

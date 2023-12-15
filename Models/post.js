@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/devnest');
+    await mongoose.connect('mongodb://127.0.0.1:27017/devnest');
 }
 
 const Post = new Schema({
@@ -16,17 +16,17 @@ const Post = new Schema({
     },
     content: {
         type: String,
-        required:true
+        required: true
     },
     club: {
         type: String,
-        required:true
+        required: true
     },
     upVote: [],
     downVote: [],
     date: {
         type: Date,
-        default:new Date(Date.now())
+        default: new Date(Date.now())
     },
     bestRes: {
         type: Schema.Types.ObjectId,
@@ -34,9 +34,9 @@ const Post = new Schema({
     },
     status: {
         type: String,
-        default:"Open",
+        default: "Open",
     },
-    views:[],
+    views: [],
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: "User",
@@ -44,11 +44,11 @@ const Post = new Schema({
     },
     response: [{
         type: Schema.Types.ObjectId,
-        ref:"Response"
+        ref: "Response"
     }]
-    
+
 })
 
 
-module.exports = mongoose.model("Post",Post)
+module.exports = mongoose.model("Post", Post)
 
