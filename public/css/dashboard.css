@@ -70,12 +70,12 @@ nav  i {
 }
 .right-con{
     flex:1;
-    margin-left: 32rem;
 }
 
 .right-btn-wrapper{
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     gap:1.4rem;
     padding-bottom: 2rem;
 }
@@ -190,9 +190,33 @@ nav  i {
     width:10rem;
 }
 .success{
-    color:limegreen;
+    color:rgb(144, 255, 144);
+    background-color: rgb(213, 255, 213);
+}
+.input-search{
+    display: flex;
+    gap:1rem;
+}
+.input-search > input{
+    padding:0.6rem 1rem;
+    border-radius: 0.4rem;
+    border:0.1rem solid #fff;
+    
 }
 
+.input-search > input:focus{
+    outline:none;
+    border:0.1rem solid rgb(70,74,255);
+}
+.input-search > button{
+    background-color: #464aff;
+    border-radius: 0.4rem;
+    padding: 0.6rem 2rem;
+    font-size: 1.4rem;
+    color:#fff;
+    border:none;
+    
+}
 .br-50{
     border-radius: 50%;
 }
@@ -274,12 +298,11 @@ nav  i {
 }
 
 .msg{
-    font-size: 12px;
+    font-size: 16px;
     padding:0.6rem 0.6rem;
     border-radius: 4px;
     margin:1.2rem 0;
-    text-align: center;
-    width:40rem;
+    
 }
 .web-c{
     background-color: rgba(255, 233, 115, 1);

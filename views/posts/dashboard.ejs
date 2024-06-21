@@ -16,7 +16,7 @@
     />
     <link rel="stylesheet" href="/css/dashboard.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
-    <link rel="stylesheet" href="/css/loco.css" />
+    
     <script>
    
 </script>
@@ -38,7 +38,7 @@
     </a>
 
     <div class="main">
-      <div class="left-con">
+      <!-- <div class="left-con">
         <div class="box-block">
           <div class="box-top">
             <h3 class="box-title">Club</h3>
@@ -112,7 +112,7 @@
             <label for="closed">Oldest First</label>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div id="all-dought" class="right-con">
         <div class="flash">
@@ -127,9 +127,13 @@
               <button class="btn-my-dought not-active">Your Discussions</button>
             </form>
           </div>
-          <%- include("../includes/flash.ejs") %>
+          <div>
+          <form class="input-search" action="/posts/search">
+          <input type="search" name="search"  placeholder="Search by the club">
+          <button>Search</button></form>
+          </div>
         </div>
-
+        
         <div id="loco-con">
           <div class="all-dought">
           <% if(allPost.length) {%> 
@@ -220,19 +224,26 @@
                         <% } %>
                         
                         <p class="highlight-text"><span class="bold">+<%= post.response.length %> </span>Answered</p>
+                        
+                        
 
                         
                        </div>
+                        
                       </p>
 
                       
                     </div>
                     
+                     
+                    
                     <p class="highlight-text bold">
                       <span class="bold">👁️ </span>
                        <%= post.views.length %> Views</p>
 
-
+<p class="highlight-text bold">
+                      <span class="bold"><i class="bi bi-hand-thumbs-up"></i> </span>
+                       <%= post.likes.length %> Like</p>
                        
           
                        
@@ -281,7 +292,7 @@
       </div>
     </div>
     
-    <script src="/js/flash.js"></script>
+    <!-- <script src="/js/flash.js"></script> -->
     <script src="/js/toggle.js"></script>
   </body>
 </html>

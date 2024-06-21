@@ -1,13 +1,14 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+require('dotenv').config;
 
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/devnest');
+    await mongoose.connect(process.env.MONGO_URL);
 }
+
 
 const Post = new Schema({
     title: {
@@ -37,6 +38,7 @@ const Post = new Schema({
         default: "Open",
     },
     views: [],
+    likes:[],
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: "User",

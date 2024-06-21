@@ -5,7 +5,16 @@
     justify-content: center;
     box-shadow: 0 0.5rem 0 rgb(233 236 239 / 50%);
 }
-
+.card-footer-right > a > i {
+    font-size: 1.6rem;
+}.card-footer-right > a{
+    display: flex;
+    align-items: center;gap:0.6rem;
+    font-weight: bold;
+    color:rgb(67,69,72);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
 .inner-container{
     width:120rem;
     padding:1.2rem 2rem 1.2rem 2rem;

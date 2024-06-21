@@ -12,7 +12,8 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+
 
 
 // options to config

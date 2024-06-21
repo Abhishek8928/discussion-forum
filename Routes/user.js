@@ -54,11 +54,22 @@ Router.post("/signup",async (req, res) => {
     }
 })
 Router.get("/profile", function (req, res, next){
-    (req.user) ? next() : res.redirect("/login")
+    
+    console.log(req.user)
+    if(req.user){
+        return next()
+    } else{
+        return res.redirect("/login")
+    }
 }, async (req, res) => {
     let user = await User.findById(req.user._id);
     res.render("./users/profile.ejs",{user})
 })
 
-
+Router.post("/update-user/:id",async function (req,res){
+    const { id } = req.params;
+    let updatedUser = await User.findByIdAndUpdate(id, req.body);
+    await updatedUser.save();
+    res.redirect("/profile")
+})
 module.exports = Router;

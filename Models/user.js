@@ -6,9 +6,9 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
 
 main().catch(err => console.log(err));
-
+require('dotenv').config;
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/devnest');
+    await mongoose.connect(process.env.MONGO_URL);
 }
 
 const User = new Schema({

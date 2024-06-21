@@ -16,13 +16,7 @@ Router.get("/", async (req, res) => {
     },
   });
   allPost.reverse();
-  for (let post of allPost) {
-
-    for (let i = 0; i < post.response.length; i++) {
-
-       console.log(post?.response[i])
-    }
-  }
+  
   function formatRelativeTime(originalTimestamp) {
     const currentTimestamp = new Date();
     const timeDifference = currentTimestamp - originalTimestamp;
@@ -196,10 +190,86 @@ Router.post("/:id/edit", async (req, res) => {
 });
 
 Router.patch("/:id", async (req, res) => {
-  console.log(req.params.id);
-  console.log({ ...req.body.posts });
+  
   await Post.findByIdAndUpdate(req.params.id, { ...req.body.posts });
   req.flash("success", "Update successfully 🎉");
   res.redirect("/posts/mydiscussion");
 });
+
+
+Router.get("/search",async function (req,res){
+  const { search } = req.query;
+
+  const searchRegex = new RegExp(search, 'i');
+  
+  // Find posts where the 'club' field matches the search query, case-insensitive
+  let allPost = await Post.find({ 'club': searchRegex })
+    .populate("createdBy")
+    .populate({
+      path: "response", // Populate 'response' field
+      model: "Response", // Model to reference
+      populate: {
+        path: "responsedBy", // Populate 'responsedBy' field within 'response'
+        model: "User", // Model to reference
+      },
+    });
+  allPost.reverse();
+
+  function formatRelativeTime(originalTimestamp) {
+    const currentTimestamp = new Date();
+    const timeDifference = currentTimestamp - originalTimestamp;
+
+    const seconds = Math.floor(timeDifference / 1000);
+    if (seconds < 60) {
+      return "asked less than a minute ago";
+    }
+
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) {
+      return `asked ${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+    }
+
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) {
+      return `asked ${hours} hour${hours > 1 ? "s" : ""} ago`;
+    }
+
+    const days = Math.floor(hours / 24);
+    if (days < 7) {
+      return `asked ${days} day${days > 1 ? "s" : ""} ago`;
+    }
+
+    // If the post is older than a week, return the actual date and time
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    };
+    return originalTimestamp.toLocaleDateString(undefined, options);
+  }
+
+  res.render("./posts/dashboard.ejs", {
+    allPost,
+    formatRelativeTime: formatRelativeTime,
+  });
+})
+
+
+Router.get("/like/:id",async function(req,res){
+  const { id } = req.params;
+  let post = await Post.findById(id);
+  if(req.user){
+    const { id } = req.user;
+    if(post.likes.indexOf(id) === -1){
+      post.likes.push(id);
+    } else {
+      post.likes.splice(post.likes.indexOf(id) , 1)
+    }
+  }
+  await post.save()
+  res.redirect(`/posts/show/${id}`)
+  
+})
 module.exports = Router;
